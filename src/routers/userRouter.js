@@ -31,6 +31,10 @@ router.post('/addPhone', auth, async (req, res) => {
     }
 })
 
+router.get('/me', auth, async (req, res) => {
+    res.status(200).send(req.user)
+})
+
 router.post('/login', async (req, res) => {
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password)

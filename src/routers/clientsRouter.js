@@ -15,7 +15,7 @@ router.post('/addClient', async (req, res) => {
 
 router.get('/getClients', async (req, res) => {
     try{
-        const clients = await Client.find()
+        const clients = await Client.find().sort({ createdAt: -1 })
         res.status(200).send(clients)
     } catch(e){
         res.status(400).send(e)
