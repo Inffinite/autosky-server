@@ -1,5 +1,6 @@
 const express = require('express')
 const User = require('../models/user.js')
+const Gallery = require('../models/gallery.js')
 const Phone = require('../models/phone.js')
 const bcrypt = require('bcryptjs')
 const hashPassword = require('../middleware/hashPassword')
@@ -30,6 +31,18 @@ router.post('/addPhone', auth, async (req, res) => {
         res.status(400).send(e)
     }
 })
+
+router.post('/addImage', auth, async (req, res) => {
+    const image = new Gallery(req.body)
+
+    try{
+        await image.save()
+        res.status(201).send()
+    } catch(e){
+        res.status(400).send(e)
+    }
+})
+
 
 router.get('/me', auth, async (req, res) => {
     res.status(200).send(req.user)
