@@ -45,7 +45,7 @@ router.post('/addImage', auth, async (req, res) => {
 
 router.get('/getImages', async (req, res) => {
     try{
-        const images = await Gallery.find()
+        const images = await Gallery.find().sort({ createdAt: -1 })
         res.status(200).send(images)
     } catch(e){
         res.status(400).send(e)
