@@ -43,6 +43,15 @@ router.post('/addImage', auth, async (req, res) => {
     }
 })
 
+router.get('/getImages', async (req, res) => {
+    try{
+        const images = await Gallery.find()
+        res.status(200).send(images)
+    } catch(e){
+        res.status(400).send(e)
+    }
+})
+
 
 router.get('/me', auth, async (req, res) => {
     res.status(200).send(req.user)
