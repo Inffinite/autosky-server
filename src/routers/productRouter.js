@@ -1,6 +1,6 @@
 const express = require('express')
 const { checkPassword } = require('../middleware/checks')
-const Product = require('../models/product.js')
+const Product = require('../models/products.js')
 const router = new express.Router()
 
 router.post('/addProduct', checkPassword, async (req, res) => {

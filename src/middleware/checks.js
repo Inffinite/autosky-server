@@ -1,4 +1,3 @@
-const User = require('../models/user')
 const bcrypt = require('bcryptjs')
 
 const checkPassword = async (req, res, next) => {
